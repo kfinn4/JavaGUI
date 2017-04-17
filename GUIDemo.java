@@ -15,6 +15,7 @@ public class GUIDemo extends JFrame
     private JPanel panel;
     private JButton biggerButton;
     private JButton smallerButton;
+    private JButton doubleButton;
 
     /**
      * Set up the application.
@@ -22,17 +23,20 @@ public class GUIDemo extends JFrame
     public GUIDemo()
     {
 	// CONSTRUCTOR NEEDS TO BE FINISHED!
-	setTitle("Bigger/Smaller");
+	setTitle("Bigger/Smaller/Double");
         setSize(200, 100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         panel = new JPanel();
         biggerButton = new JButton("BIGGER");
         smallerButton = new JButton("SMALLER");
+	doubleButton = new JButton("DOUBLE");
         biggerButton.addActionListener(new ButtonHandler());
         smallerButton.addActionListener(new ButtonHandler());
+	doubleButton.addActionListener(new ButtonHandler());
         add(panel);
         panel.add(biggerButton);
         panel.add(smallerButton);
+	panel.add(doubleButton);
         setVisible(true);
     }
 
@@ -53,6 +57,10 @@ public class GUIDemo extends JFrame
             if (e.getSource().equals(biggerButton))
             {
                 setSize(size.width + 10, size.height + 10);
+            }
+	    else if(e.getSource().equals(doubleButton))
+	    {
+		setSize(size.width * 2, size.height * 2);
             }
             else
             {
